@@ -2,99 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <!-- Bootstrap JS -->
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Bootstrap JS -->
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
 
 
-    <!-- Bootstrap Icons -->
+  <!-- Bootstrap Icons -->
 </head>
 
 <body style="background-color: #eaeeff;">
 
-    <!--modal-->
-    
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--modal-->
+  <!--login modal-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="recipient-name" class="col-form-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
+              <label for="recipient-name" class="col-form-label">Useranme:</label>
+              <input type="text" class="form-control" id="Useranme-text"></input>
             </div>
             <div class="mb-3">
-              <label for="message-text" class="col-form-label">Message:</label>
-              <textarea class="form-control" id="message-text"></textarea>
+              <label for="message-text" class="col-form-label">Password:</label>
+              <input type="password" class="form-control" id="Password-text"></input>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
+          <button type="button" class="btn btn-primary" onclick="loginbtn()">Login </button>
         </div>
       </div>
     </div>
   </div>
   <!--modal-->
+<!--login modal-->
 
-
-    <!-- Navbar -->
-    <div class="container">
-        <div class=" d-flex justify-content-center">
-            <div class="col-9">
-                <nav class="navbar navbar-expand-lg bg-light shadow rounded pt-3 ">
-                    <div class="container-fluid  ">
-                        <a class="navbar-brand" href="#"> <img src="./images/relaxing-cat.jpg" alt="menu" class="img-fluid mx-2"
-                                width="70" height="70"></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Profile</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-outline-info mx-2">Login</button>
-                            <button type="button" class="btn btn-outline-info mx-2">Register</button>
-                        </div>
-                    </div>
-                </nav>
+  <!-- Navbar -->
+  <div class="container">
+    <div class=" d-flex justify-content-center">
+      <div class="col-9">
+        <nav class="navbar navbar-expand-lg bg-light shadow rounded pt-3 ">
+          <div class="container-fluid  ">
+            <a class="navbar-brand" href="#"> <img src="./images/relaxing-cat.jpg" alt="menu" class="img-fluid mx-2"
+                width="70" height="70"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+              <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-info mx-2">Login</button>
+              <button type="button" class="btn btn-outline-info mx-2">Register</button>
             </div>
-        </div>
+          </div>
+        </nav>
+      </div>
     </div>
-    <!-- Navbar -->
+  </div>
+  <!-- Navbar -->
 
 
-     <!--posts eara post -->
-    <div class="container mt-5 h-100">
-        <div class=" d-flex justify-content-center mt-5">
-            <div class="col-9">
-                <div id="posts">
-                </div>
-            </div>
+  <!--posts eara post -->
+  <div class="container mt-5 h-100">
+    <div class=" d-flex justify-content-center mt-5">
+      <div class="col-9">
+        <div id="posts">
         </div>
+      </div>
     </div>
-    <!--posts eara post -->
-    
-    <script src="main.js"></script>
+  </div>
+  <!--posts eara post -->
+
+  <script src="main.js"></script>
 </body>
+
 </html>

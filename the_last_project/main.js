@@ -1,23 +1,25 @@
-
 let posts = document.getElementById('posts');
-
-axios.get("https://tarmeezacademy.com/api/v1/posts")
+const baseUrl = "https://tarmeezacademy.com/api/v1";
+axios.get(`${baseUrl}/posts?limit=15`)
     .then((response) => {
-        posts.innerHTML = response.data.data.map((post) => {  
-            let author = post.author;      
+        posts.innerHTML = response.data.data.map((post) => {
+            let author = post.author;
+            let profileImage = author.profile_image ? author.profile_image : "./images/Logo.png";
+            let postImage = post.image ? post.image : "./images/Logo-for-hack.jpg";
+
             return `
             <div class="post shadow mt-5 mb-5">
                         <div class="card">
                             <!--header of card  -->
                             <div class="card-header">
-                                <img src=${author.profile_image || "./images/Logo.png"} alt="" style="width: 50px; height: 50px;">
+                                <img src=${profileImage} alt="" style="width: 50px; height: 50px;" onerror="this.src='./images/Logo.png'">
                                 <b>${author.name}</b>
                             </div>
                             <!--header of card  -->
                             <!--body-->
                             <div class="card-body">
-                                <img src="${post.image}" alt="post1" class="w-100">
-                                <h6 class="text-muted mt-2">
+                                <img src="${postImage}" alt="post1" class="w-100" onerror="this.src='./images/Logo-for-hack.jpg'">
+                                <h6 class="text-muted mt-2" >
                                     ${post.created_at}
                                 </h6>
                                 <h5 class="mt-2">
@@ -45,5 +47,24 @@ axios.get("https://tarmeezacademy.com/api/v1/posts")
                     </div>
             `
         }).join('');
-   
-    });
+
+    }).catch((error) => {
+        console.error("Error:", error);
+    })
+
+
+
+function loginbtn() {
+    let usern = document.getElementById("Useranme-text").value;
+    let pass = document.getElementById("Password-text").value;
+    const params = {
+        "username": usern,
+        "password": pass
+    };
+
+    url = `${baseUrl}/login`;
+    axios.post(url, params)
+        .then((response) => {
+         console.log("Login successful:", response.data);
+        });
+}
