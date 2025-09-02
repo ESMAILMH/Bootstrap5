@@ -54,7 +54,7 @@ axios.get(`${baseUrl}/posts?limit=15`)
 
 
 
-function loginbtn() {
+function loginbtn() { 
     let usern = document.getElementById("Useranme-text").value;
     let pass = document.getElementById("Password-text").value;
     const params = {
@@ -65,6 +65,7 @@ function loginbtn() {
     url = `${baseUrl}/login`;
     axios.post(url, params)
         .then((response) => {
-         console.log("Login successful:", response.data);
+            
+         
         });
 }
